@@ -72,11 +72,11 @@ endblock %} {% block outerContent %}
             <h4 class="nhsuk-u-margin-bottom-0">
                 <a href="/rare-disease/referral/clinical-info">Clinical information</a>
             </h4>
-            {% if not req.session.data['rare-notes'] %}
+            {# {% if not req.session.data['rare-notes'] %}
                 <strong class="nhsuk-tag nhsuk-tag--blue" style="margin-left: auto">
                 Not started
                 </strong>
-            {% endif %}
+            {% endif %} #}
         </div>
         {% if req.session.data['rare-notes'] %}
     <dl class="nhsuk-summary-list">
@@ -101,11 +101,11 @@ endblock %} {% block outerContent %}
                 <a href="/rare-disease/referral/test">Test request</a>
             </h4>
 
-            {% if not req.session.data['rare-clinical-indication'] %}
+            {# {% if not req.session.data['rare-clinical-indication'] %}
             <strong class="nhsuk-tag nhsuk-tag--blue" style="margin-left: auto">
                 Not started
             </strong>
-            {% endif %}
+            {% endif %} #}
         </div>
         {% if req.session.data['rare-clinical-indication'] %}
         <dl class="nhsuk-summary-list">
@@ -183,11 +183,11 @@ endblock %} {% block outerContent %}
                 <a href="/rare-disease/referral/family">Family</a>
             </h4>
 
-        {% if not req.session.data['rare-relationship-picker'] and not req.session.data['rare-family-member-disease-status'] %}
+        {# {% if not req.session.data['rare-relationship-picker'] and not req.session.data['rare-family-member-disease-status'] %}
             <strong class="nhsuk-tag nhsuk-tag--blue" style="margin-left: auto">
                 Not started
             </strong>
-            {% endif %}
+            {% endif %} #}
         </div>
 
         {% if req.session.data['rare-relationship-picker'] %}
@@ -263,6 +263,50 @@ endblock %} {% block outerContent %}
             </div>
         </dl>
         {% endif %}
+        <!-- SAMPLES -->
+        <div
+            class="nhsuk-u-margin-bottom-4"
+            style="display: flex; align-items: center"
+        >
+            <h4 class="nhsuk-u-margin-bottom-0">
+                <a href="/rare-disease/referral/samples">Samples</a>
+            </h4>
+        </div>
+        {%- if data['rare-lab-sample'] or data['rare-lab-sample-family'] %}
+        <dl class="nhsuk-summary-list">
+            <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
+                <dt class="nhsuk-summary-list__key" style="border-bottom: 0">Patient</dt>
+                <dd class="nhsuk-summary-list__value" style="border-bottom: 0"></dd>
+            </div>
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">Sample ID</dt>
+                <dd class="nhsuk-summary-list__value">
+                    {{ data['rare-lab-sample'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a href="/rare-disease/referral/samples">{%- if data['rare-lab-sample'] %}Change{%- else %}Add{%- endif %}</a>
+                </dd>
+            </div>
+            <div class="nhsuk-u-margin-bottom-4"></div>
+            {%- endif %}
+            <!-- FAMILY MEMBER -->
+            {%- if data['rare-relationship-picker'] and (data['rare-lab-sample-family'] or data['rare-lab-sample']) %}
+            <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
+                <dt class="nhsuk-summary-list__key" style="border-bottom: 0">Mother</dt>
+                <dd class="nhsuk-summary-list__value" style="border-bottom: 0"></dd>
+            </div>
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">Sample ID</dt>
+                <dd class="nhsuk-summary-list__value">
+                    {{ data['rare-lab-sample-family'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a href="/rare-disease/referral/samples">{%- if data['rare-lab-sample-family'] %}Change{%- else %}Add{%- endif %}</a>
+                </dd>
+            </div>
+        {%- endif %}
+        </dl>
+
 
         <!-- CARE TEAM STAGE -->
         <div
@@ -272,12 +316,6 @@ endblock %} {% block outerContent %}
             <h4 class="nhsuk-u-margin-bottom-0">
                 <a href="/rare-disease/referral/care-team">Care team</a>
             </h4>
-
-            {% if not req.session.data['rare-care-team'] %}
-                <strong class="nhsuk-tag nhsuk-tag--blue" style="margin-left: auto">
-                    Not started
-                </strong>
-            {% endif %}
         </div>
         {% if req.session.data['rare-care-team'] %}
         <dl class="nhsuk-summary-list">
@@ -344,11 +382,11 @@ endblock %} {% block outerContent %}
                 <a href="/rare-disease/referral/glh">GLH</a>
             </h4>
 
-            {% if not req.session.data['rare-glh-picker'] %}
+            {# {% if not req.session.data['rare-glh-picker'] %}
                 <strong class="nhsuk-tag nhsuk-tag--blue" style="margin-left: auto">
                     Not started
                 </strong>
-            {% endif %}
+            {% endif %} #}
         </div>
         
         {% if req.session.data['rare-glh-picker'] %}
@@ -371,11 +409,11 @@ endblock %} {% block outerContent %}
             <h4 class="nhsuk-u-margin-bottom-0">
                 <a href="/rare-disease/referral/hpo/1">HPO terms</a>
             </h4>
-            {% if not req.session.data['hpoCollection'] and not req.session.data['hpoCollection'].length > 0 %}
+            {# {% if not req.session.data['hpoCollection'] and not req.session.data['hpoCollection'].length > 0 %}
                 <strong class="nhsuk-tag nhsuk-tag--blue" style="margin-left: auto">
                     Not started
                 </strong>
-            {% endif %}
+            {% endif %} #}
         </div>
 
         {% if req.session.data['hpoCollection'] and req.session.data['hpoCollection'].length > 0 %}

@@ -2986,7 +2986,7 @@ b {
   background-color: #007f3b;
   border: 2px solid transparent;
   border-radius: 4px;
-  box-shadow: 0 4px 0 #00401e;
+  box-shadow: 0 4px 0 rgb(0, 63.5, 29.5);
   box-sizing: border-box;
   color: #ffffff;
   cursor: pointer;
@@ -3034,7 +3034,7 @@ b {
   padding: 0;
 }
 .nhsuk-button:hover {
-  background-color: #00662f;
+  background-color: rgb(0, 101.6, 47.2);
 }
 .nhsuk-button:focus {
   background: #ffeb3b;
@@ -3049,7 +3049,7 @@ b {
   color: #ffffff;
 }
 .nhsuk-button:active {
-  background: #00401e;
+  background: rgb(0, 63.5, 29.5);
   box-shadow: none;
   color: #ffffff;
   top: 4px;
@@ -3076,7 +3076,7 @@ b {
   box-shadow: 0 4px 0 #263139;
 }
 .nhsuk-button--secondary:hover {
-  background-color: #384853;
+  background-color: rgb(55.6, 71.6947368421, 83.4);
 }
 .nhsuk-button--secondary:focus {
   background: #ffeb3b;
@@ -3100,7 +3100,7 @@ b {
   color: #212b32;
 }
 .nhsuk-button--reverse:hover {
-  background-color: #f2f2f2;
+  background-color: rgb(242.25, 242.25, 242.25);
   color: #212b32;
 }
 .nhsuk-button--reverse:focus {
@@ -3126,6 +3126,29 @@ b {
 }
 .nhsuk-button--reverse.nhsuk-button--disabled:focus {
   background-color: #ffffff;
+}
+
+.nhsuk-button--warning {
+  background-color: #d5281b;
+  box-shadow: 0 4px 0 rgb(106.5, 20, 13.5);
+}
+.nhsuk-button--warning:hover {
+  background-color: rgb(167.7375, 31.5, 21.2625);
+}
+.nhsuk-button--warning:focus {
+  background: #ffeb3b;
+  box-shadow: 0 4px 0 #212b32;
+  color: #212b32;
+  outline: 4px solid transparent;
+}
+.nhsuk-button--warning:active {
+  background: rgb(106.5, 20, 13.5);
+  box-shadow: none;
+  color: #ffffff;
+  top: 4px;
+}
+.nhsuk-button--warning.nhsuk-button--disabled {
+  background-color: #d5281b;
 }
 
 /**
@@ -3154,7 +3177,7 @@ b {
 .nhsuk-button--disabled:active,
 .nhsuk-button[disabled=disabled]:active,
 .nhsuk-button[disabled]:active {
-  box-shadow: 0 4px 0 #00401e;
+  box-shadow: 0 4px 0 rgb(0, 63.5, 29.5);
   top: 0;
 }
 
@@ -4030,7 +4053,7 @@ b {
  */
 .nhsuk-error-summary {
   padding: 16px;
-  margin-bottom: 48px;
+  margin-bottom: 32px;
   border: 4px solid #d5281b;
 }
 @media (min-width: 40.0625em) {
@@ -4040,7 +4063,7 @@ b {
 }
 @media (min-width: 40.0625em) {
   .nhsuk-error-summary {
-    margin-bottom: 56px;
+    margin-bottom: 48px;
   }
 }
 @media (min-width: 40.0625em) {
@@ -4512,7 +4535,7 @@ b {
   display: block;
 }
 .nhsuk-header__link:hover .nhsuk-logo {
-  box-shadow: 0 0 0 4px #003d78;
+  box-shadow: 0 0 0 4px rgb(0, 61.1, 119.6);
 }
 .nhsuk-header__link:focus {
   box-shadow: none;
@@ -4693,7 +4716,7 @@ b {
     width: 27px;
   }
   .nhsuk-search__submit:hover {
-    background-color: #003d78;
+    background-color: rgb(0, 61.1, 119.6);
     border: 1px solid #ffffff;
   }
   .nhsuk-search__submit:hover .nhsuk-icon {
@@ -4728,7 +4751,7 @@ b {
     width: 27px;
   }
   .nhsuk-search__submit:hover {
-    background-color: #003d78;
+    background-color: rgb(0, 61.1, 119.6);
     border: 1px solid #ffffff;
   }
   .nhsuk-search__submit:hover .nhsuk-icon__search {
@@ -5296,8 +5319,8 @@ b {
   fill: #ffffff;
 }
 .nhsuk-header--white .nhsuk-search__submit:hover {
-  background-color: #004b93;
-  border-color: #004b93;
+  background-color: rgb(0, 75.2, 147.2);
+  border-color: rgb(0, 75.2, 147.2);
 }
 .nhsuk-header--white .nhsuk-search__submit:focus {
   background-color: #ffeb3b;
@@ -6510,6 +6533,14 @@ b {
 /* ==========================================================================
    COMPONENTS/ #SELECT
    ========================================================================== */
+/**
+ * Select input sizing
+ * 1. Uses rems so that safari input scales with font size
+ * 2. This min-width was chosen because:
+ *    - it makes the Select wider than it is tall (which is what users expect)
+ *    - 20ex + 3ex matches the 'width-10' variant of the input component
+ *    - it fits comfortably on screens as narrow as 240px wide
+ */
 .nhsuk-select {
   font-weight: 400;
   font-size: 16px;
@@ -6517,7 +6548,8 @@ b {
   line-height: 1.5;
   border: 2px solid #4c6272;
   box-sizing: border-box;
-  min-height: 40px;
+  height: 2.5rem; /* [1] */
+  min-width: 23ex; /* [2] */
   max-width: 100%;
   padding: 4px;
 }
@@ -6966,8 +6998,8 @@ b {
   font-size: 14px;
   font-size: 0.875rem;
   line-height: 1;
-  background-color: #0055a6;
-  border: 1px solid #0055a6;
+  background-color: rgb(0, 84.6, 165.6);
+  border: 1px solid rgb(0, 84.6, 165.6);
   color: #ffffff;
   display: inline-block;
   outline: 2px solid transparent;
@@ -7001,57 +7033,57 @@ b {
 }
 
 .nhsuk-tag--grey {
-  background-color: #dbe0e3;
-  border-color: #354550;
-  color: #354550;
+  background-color: rgb(219.2, 223.6, 226.8);
+  border-color: rgb(53.2, 68.6, 79.8);
+  color: rgb(53.2, 68.6, 79.8);
 }
 
 .nhsuk-tag--green {
-  background-color: #cce5d8;
-  border-color: #004c23;
-  color: #004c23;
+  background-color: rgb(204, 229.4, 215.8);
+  border-color: rgb(0, 76.2, 35.4);
+  color: rgb(0, 76.2, 35.4);
 }
 
 .nhsuk-tag--aqua-green {
-  background-color: #ccedeb;
-  border-color: #00524d;
-  color: #00524d;
+  background-color: rgb(204, 236.8, 234.6);
+  border-color: rgb(0, 82, 76.5);
+  color: rgb(0, 82, 76.5);
 }
 
 .nhsuk-tag--blue {
-  background-color: #ccdff1;
-  border-color: #004281;
-  color: #004281;
+  background-color: rgb(204, 222.8, 240.8);
+  border-color: rgb(0, 65.8, 128.8);
+  color: rgb(0, 65.8, 128.8);
 }
 
 .nhsuk-tag--purple {
-  background-color: #d6cce3;
-  border-color: #240050;
-  color: #240050;
+  background-color: rgb(214.2, 204, 226.8);
+  border-color: rgb(35.7, 0, 79.8);
+  color: rgb(35.7, 0, 79.8);
 }
 
 .nhsuk-tag--pink {
-  background-color: #efd3e3;
-  border-color: #57133a;
-  color: #57133a;
+  background-color: rgb(238.8, 211.4, 227);
+  border-color: rgb(87, 18.5, 57.5);
+  color: rgb(87, 18.5, 57.5);
 }
 
 .nhsuk-tag--red {
-  background-color: #f7d4d1;
-  border-color: #6b140e;
-  color: #6b140e;
+  background-color: rgb(246.6, 212, 209.4);
+  border-color: rgb(106.5, 20, 13.5);
+  color: rgb(106.5, 20, 13.5);
 }
 
 .nhsuk-tag--orange {
-  background-color: #ffdc8e;
-  border-color: #4d3708;
-  color: #4d3708;
+  background-color: rgb(255, 219.5, 141.5);
+  border-color: rgb(76.5, 55.2, 8.4);
+  color: rgb(76.5, 55.2, 8.4);
 }
 
 .nhsuk-tag--yellow {
   background-color: #fff59d;
-  border-color: #4d4712;
-  color: #4d4712;
+  border-color: rgb(76.5, 70.5, 17.7);
+  color: rgb(76.5, 70.5, 17.7);
 }
 
 /* Remove tag border

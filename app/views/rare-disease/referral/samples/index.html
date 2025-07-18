@@ -1,0 +1,75 @@
+{% extends 'layout.html' %} {% set mainClasses = "nhsuk-main-wrapper--s" %} {%
+block pageTitle %} Samples page {% endblock %} {% block beforeContent %} {%
+from 'breadcrumb/macro.njk' import breadcrumb %} {{ breadcrumb({ items: [ {
+href: "/rare-disease/referral", text: "Referral #123456789" } ], href: "/v1/referral/hpo/1",
+text: "HPO terms" }) }} {% endblock %} {% block outerContent %}
+<div class="nhsuk-back-link" style="margin-top: 2rem">
+    <a class="nhsuk-back-link__link" href="javascript:history.back();">
+        <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+            aria-hidden="true" height="24" width="24">
+            <path
+                d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z">
+            </path>
+            </path>
+        </svg>
+        Go back</a>
+</div>
+{% endblock %} {% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+        <div class="nhsuk-form-group">
+            <div class="nhsuk-grid-column-full">
+            <h1 class="nhsuk-heading-l">Samples</h1>      
+            <form action="/rare-disease/referral" method="post" class="form">
+                <div class="nhsuk-form-group nhsuk-grid-column-three-quarters nhsuk-u-margin-top-4">
+                    <div class="nhsuk-grid-row">
+                        <div class="nhsuk-grid-column-three-quarters nhsuk-u-padding-left-0"><p class="nhsuk-u-font-weight-bold nhsuk-u-margin-bottom-2">Ethan Carson</p></div>
+                        <div class="nhsuk-grid-column-one-quarter"><p class="nhsuk-u-font-weight-bold nhsuk-u-margin-bottom-2"><strong class="nhsuk-tag nhsuk-tag--grey" style="margin-left: auto">Patient</strong></p></div>
+                        <div class="nhsuk-grid-column-one-half nhsuk-u-padding-0 nhsuk-u-font-size-14">NHS number: <strong>944 930 3363</strong></div>
+                        <div class="nhsuk-grid-column-one-half nhsuk-u-padding-left-0 nhsuk-u-font-size-14">Date of birth: <strong>30/07/1984 (38y)</strong></div>
+                    </div>
+                    <div class="nhsuk-grid-row nhsuk-u-margin-top-3">
+                        {{ input({
+                            label: {
+                            text: "Lab sample ID"
+                            },
+                            id: "rare-lab-sample",
+                            name: "rare-lab-sample",
+                            classes: "nhsuk-u-margin-bottom-8",
+                            value: req.session.data['rare-lab-sample']
+                        }) }}
+                        <hr class="nhsuk-section-break nhsuk-section-break--xs nhsuk-section-break--visible">
+                    </div>
+                </div>
+                {% if req.session.data['rare-relationship-picker'] %}
+                <div class="nhsuk-form-group nhsuk-grid-column-three-quarters nhsuk-u-margin-top-6">
+                    <div class="nhsuk-grid-row">
+                            <div class="nhsuk-grid-column-three-quarters nhsuk-u-padding-left-0"><p class="nhsuk-u-font-weight-bold nhsuk-u-margin-bottom-2">Martha Carson</p></div>
+                            <div class="nhsuk-grid-column-one-quarter"><p class="nhsuk-u-font-weight-bold nhsuk-u-margin-bottom-2"><strong class="nhsuk-tag nhsuk-tag--grey" style="margin-left: auto">Mother</strong></p></div>
+                            <div class="nhsuk-grid-column-one-half nhsuk-u-padding-0 nhsuk-u-font-size-14">NHS number: <strong>944 930 5471</strong></div>
+                            <div class="nhsuk-grid-column-one-half nhsuk-u-padding-left-0 nhsuk-u-font-size-14">Date of birth: <strong>02/05/1998 (27y)</strong></div>
+                    </div>
+                    <div class="nhsuk-grid-row nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-4">
+                        {{ input({
+                            label: {
+                            text: "Lab sample ID"
+                            },
+                            id: "rare-lab-sample-family",
+                            name: "rare-lab-sample-family",
+                            classes: "nhsuk-u-margin-bottom-8",
+                            value: req.session.data['rare-lab-sample-family']
+                        }) }}
+                        <hr class="nhsuk-section-break nhsuk-section-break--xs nhsuk-section-break--visible">
+                    </div>
+                </div>
+                {% endif %}
+            <button class="nhsuk-button nhsuk-u-margin-top-4" data-module="nhsuk-button">
+                Save and continue
+            </button>
+        </form>
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock %}
