@@ -1,8 +1,8 @@
 {% extends 'layout.html' %} {% set mainClasses = "nhsuk-main-wrapper--s" %} {%
 block pageTitle %} Samples page {% endblock %} {% block beforeContent %} {%
 from 'breadcrumb/macro.njk' import breadcrumb %} {{ breadcrumb({ items: [ {
-href: "/rare-disease/referral", text: "Referral #123456789" } ], href: "/v1/referral/hpo/1",
-text: "HPO terms" }) }} {% endblock %} {% block outerContent %}
+href: "/rare-disease/referral", text: "Referral #123456789" } ], href: "/rare-disease/referral/samples",
+text: "Samples" }) }} {% endblock %} {% block outerContent %}
 <div class="nhsuk-back-link" style="margin-top: 2rem">
     <a class="nhsuk-back-link__link" href="javascript:history.back();">
         <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
