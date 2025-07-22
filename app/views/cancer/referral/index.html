@@ -79,11 +79,11 @@ endblock %}
       <h4 class="nhsuk-u-margin-bottom-0">
         <a href="/cancer/referral/test">Test request</a>
       </h4>
-      {# {% if not req.session.data['clinical-indication-code'] %}
+      {% if not req.session.data['clinical-indication-code'] %}
       <strong class="nhsuk-tag nhsuk-tag--blue" style="margin-left: auto">
         Not started
       </strong>
-      {% endif %} #}
+      {% endif %}
     </div>
     <dl class="nhsuk-summary-list">
       {% if req.session.data['clinical-indication-code'] %}
@@ -118,11 +118,11 @@ endblock %}
         <a href="/cancer/referral/clinical-info">Clinical information</a>
       </h4>
 
-      {# {% if not req.session.data['notes'] %}
+      {% if not req.session.data['notes'] %}
         <strong class="nhsuk-tag nhsuk-tag--blue" style="margin-left: auto">
         Not started
       </strong>
-      {% endif %} #}
+      {% endif %}
     </div>
 
     {% if req.session.data['notes'] %}
@@ -147,11 +147,11 @@ endblock %}
       <h4 class="nhsuk-u-margin-bottom-0">
         <a href="/cancer/referral/tumour-type">Tumour type</a>
       </h4>
-      {# {% if not req.session.data['tumour-type'] %}
+      {% if not req.session.data['tumour-type'] %}
       <strong class="nhsuk-tag nhsuk-tag--blue" style="margin-left: auto">
         Not started
       </strong>
-      {% endif %} #}
+      {% endif %}
     </div>
     <dl class="nhsuk-summary-list">
       {% if req.session.data['tumour-type'] %}
@@ -278,11 +278,11 @@ endblock %}
         <a href="/cancer/referral/tumour-samples">Tumour sample</a>
       </h4>
 
-      {# {% if not req.session.data['tumour-sample-type'] %}
+      {% if not req.session.data['tumour-sample-type'] %}
       <strong class="nhsuk-tag nhsuk-tag--blue" style="margin-left: auto">
         Not started
       </strong>
-      {% endif %} #}
+      {% endif %}
     </div>
     <dl class="nhsuk-summary-list">
       {% if req.session.data['tumour-sample-type'] %}
@@ -368,11 +368,11 @@ endblock %}
         <a href="/cancer/referral/germline-samples">Germline sample</a>
       </h4>
 
-      {# {% if not req.session.data['germline-sampleId'] %}
+      {% if not req.session.data['germline-sampleId'] %}
         <strong class="nhsuk-tag nhsuk-tag--blue" style="margin-left: auto">
             Not started
         </strong>
-      {% endif %} #}
+      {% endif %}
     </div>
 
     <dl class="nhsuk-summary-list">
@@ -455,30 +455,28 @@ endblock %}
             {% endif %}
         </dl>
 
-    <!-- SAMPLES -->
-
-    <div
-      class="nhsuk-u-margin-bottom-4"
-      style="display: flex; align-items: center"
-    >
-      <h4 class="nhsuk-u-margin-bottom-0">
+    <!-- SAMPLES -->    
+    <dl class="nhsuk-summary-list">
+      <div
+        class="nhsuk-u-margin-bottom-4"
+        style="display: flex; align-items: center"
+      >
+        <h4 class="nhsuk-u-margin-bottom-0">
           <a href="/cancer/referral/samples">Samples</a>
         </h4>
-    </div>
+      </div>
+    </dl>
 
     <dl class="nhsuk-summary-list">
-      {% if data['cancer-lab-sample'] %}
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">Sample</dt>
-          <dd class="nhsuk-summary-list__value">
-              {{ data['cancer-lab-sample'] }}
-          </dd>
-          <dd class="nhsuk-summary-list__actions">
-              <a href="/cancer/referral/samples">Change</a>
-          </dd>
-        </div>
-      {% endif -%}
-      {%- if data['cancer-sample-system-type'] %}
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">Sample</dt>
+        <dd class="nhsuk-summary-list__value">
+            {{ data['cancer-lab-sample'] }}
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+            <a href="/cancer/referral/samples">Change</a>
+        </dd>
+      </div>
       <div class="nhsuk-summary-list__row">
         <dt class="nhsuk-summary-list__key">Sample type</dt>
         <dd class="nhsuk-summary-list__value">
@@ -492,18 +490,15 @@ endblock %}
             <a href="/cancer/referral/samples">Change</a>
         </dd>
       </div>
-      {% endif -%}
-      {%- if data['cancer-sample-organisation'] %}
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">Organisation</dt>
-          <dd class="nhsuk-summary-list__value">
-              {{ data['cancer-sample-organisation'] }}
-          </dd>
-          <dd class="nhsuk-summary-list__actions">
-              <a href="/cancer/referral/samples">Change</a>
-          </dd>
-        </div>
-      {% endif -%}
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">Organisation</dt>
+        <dd class="nhsuk-summary-list__value">
+            {{ data['cancer-sample-organisation'] }}
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+            <a href="/cancer/referral/samples">Change</a>
+        </dd>
+      </div>
     </dl>
 
     <!-- CARE TEAM STAGE -->
@@ -516,11 +511,11 @@ endblock %}
         <a href="/cancer/referral/care-team">Care team</a>
       </h4>
 
-      {# {% if not req.session.data['care-team'] %}
+      {% if not req.session.data['care-team'] %}
         <strong class="nhsuk-tag nhsuk-tag--blue" style="margin-left: auto">
             Not started
         </strong>
-      {% endif %} #}
+      {% endif %}
     </div>
     </dl>
 
@@ -588,11 +583,11 @@ endblock %}
         <a href="/cancer/referral/glh">GLH</a>
       </h4>
 
-      {# {% if not req.session.data['glh-picker'] %}
+      {% if not req.session.data['glh-picker'] %}
         <strong class="nhsuk-tag nhsuk-tag--blue" style="margin-left: auto">
             Not started
         </strong>
-      {% endif %} #}
+      {% endif %}
     </div>
 
     {% if req.session.data['glh-picker'] %}
