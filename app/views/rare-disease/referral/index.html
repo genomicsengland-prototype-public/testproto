@@ -273,11 +273,9 @@ endblock %} {% block outerContent %}
             </h4>
         </div>
         {%- if data['rare-lab-sample'] or data['rare-lab-sample-family'] %}
+        <h4>Patient</h4>
+
         <dl class="nhsuk-summary-list">
-            <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
-                <dt class="nhsuk-summary-list__key" style="border-bottom: 0">Patient</dt>
-                <dd class="nhsuk-summary-list__value" style="border-bottom: 0"></dd>
-            </div>
             <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">Sample ID</dt>
                 <dd class="nhsuk-summary-list__value">
@@ -291,10 +289,7 @@ endblock %} {% block outerContent %}
             {%- endif %}
             <!-- FAMILY MEMBER -->
             {%- if data['rare-relationship-picker'] and (data['rare-lab-sample-family'] or data['rare-lab-sample']) %}
-            <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
-                <dt class="nhsuk-summary-list__key" style="border-bottom: 0">Mother</dt>
-                <dd class="nhsuk-summary-list__value" style="border-bottom: 0"></dd>
-            </div>
+            <h4>Mother</h4>
             <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">Sample ID</dt>
                 <dd class="nhsuk-summary-list__value">
