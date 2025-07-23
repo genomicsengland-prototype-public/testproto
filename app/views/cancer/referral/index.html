@@ -125,8 +125,8 @@ endblock %}
       {% endif %} #}
     </div>
 
-    {% if req.session.data['notes'] %}
     <dl class="nhsuk-summary-list">
+      {% if req.session.data['notes'] %}
       <div class="nhsuk-summary-list__row">
         <dt class="nhsuk-summary-list__key">Clinical information</dt>
         <dd class="nhsuk-summary-list__value">
@@ -136,8 +136,8 @@ endblock %}
           <a href="/cancer/referral/clinical-info">Change</a>
         </dd>
       </div>
+      {% endif %}
     </dl>
-    {% endif %}
 
     <!-- TUMOUR TYPE STAGE -->
     <div
