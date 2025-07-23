@@ -455,57 +455,6 @@ endblock %}
             {% endif %}
         </dl>
 
-    <!-- SAMPLES -->
-
-    <div
-      class="nhsuk-u-margin-bottom-4"
-      style="display: flex; align-items: center"
-    >
-      <h4 class="nhsuk-u-margin-bottom-0">
-          <a href="/cancer/referral/samples">Samples</a>
-        </h4>
-    </div>
-
-    <dl class="nhsuk-summary-list">
-      {% if data['cancer-lab-sample'] %}
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">Sample</dt>
-          <dd class="nhsuk-summary-list__value">
-              {{ data['cancer-lab-sample'] }}
-          </dd>
-          <dd class="nhsuk-summary-list__actions">
-              <a href="/cancer/referral/samples">Change</a>
-          </dd>
-        </div>
-      {% endif -%}
-      {%- if data['cancer-sample-system-type'] %}
-      <div class="nhsuk-summary-list__row">
-        <dt class="nhsuk-summary-list__key">Sample type</dt>
-        <dd class="nhsuk-summary-list__value">
-            {%- if data['cancer-sample-system-type'] == 'another-system' %}
-              {{ data['cancer-sample-other-systems'] }}
-            {% else %}
-              {{ data['cancer-sample-system-type'] }}
-            {% endif %}
-        </dd>
-        <dd class="nhsuk-summary-list__actions">
-            <a href="/cancer/referral/samples">Change</a>
-        </dd>
-      </div>
-      {% endif -%}
-      {%- if data['cancer-sample-organisation'] %}
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">Organisation</dt>
-          <dd class="nhsuk-summary-list__value">
-              {{ data['cancer-sample-organisation'] }}
-          </dd>
-          <dd class="nhsuk-summary-list__actions">
-              <a href="/cancer/referral/samples">Change</a>
-          </dd>
-        </div>
-      {% endif -%}
-    </dl>
-
     <!-- CARE TEAM STAGE -->
     <dl class="nhsuk-summary-list">
     <div
