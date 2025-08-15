@@ -26,7 +26,7 @@ Variant search prototype
 <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
         <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-2">Variant search</h1>
-        <p class="nhsuk-u-margin-bottom-6">Use this tool to search available datasets to find variants linked to different types of cancer.</p>
+        <p class="nhsuk-u-margin-bottom-6">Use this tool to search 100K Genomes Project Pan-Cancer data<sup><a href="#dataSource">1</a></sup> to find variants linked to different types of solid tumours.</p>
         
 
 
@@ -108,44 +108,39 @@ Variant search prototype
               text: "For example chr7:140753336:A:T"
             }
           }) }}
-          {# {{ input({
-            id: "positionVT",
-            name: "positionVT",
-            classes: "nhsuk-u-width-two-thirds",
-            label: {
-              text: "Variant type (optional)"
-            },
-            hint: {
-              text: "For example missense"
-            }
-          }) }} #}
+
+                      <div class="nhsuk-u-margin-bottom-6">
+            <label class="nhsuk-label nhsuk-label--s" for="input-with-hint-text">
+                Variant consequence type (optional)
+            </label>
+            
+            <div class="nhsuk-hint" id="input-with-hint-text-hint">
+                For example missense
+            </div>
+
+            <select title="Variant type" name="varType" id="varType">
+                <option></option>
+                <option>missense variant</option>
+                <option>synonymous variant</option>
+                <option>initiator codon variant</option>
+                <option>stop codon variant</option>
+                <option>in-frame deletion</option>
+                <option>in-frame insertion</option>
+                <option>non coding transcript variant</option>
+                <option>splice acceptor variant</option>
+                <option>intron variant</option>
+                <option>splice donor variant</option>
+                <option>splice region variant</option>
+                <option>frameshift variant</option>
+                <option>start loss</option>
+                <option>stop gained</option>
+                <option>stop lost</option>
+                <option>start lost</option>
+                <option>transcript amplification</option>
+            </select>
+
         {% endset -%}
         
-        {% set regionHtml %}
-          {{ input({
-            id: "regionV",
-            name: "regionV",
-            classes: "nhsuk-u-width-two-thirds",
-            label: {
-              visuallyHiddenText: "Genomic region (GRCh38)"
-            },
-            hint: {
-              text: "For example chr7:140750000-140800000"
-            }
-          }) }}
-          {# {{ input({
-            id: "regionVT",
-            name: "regionVT",
-            classes: "nhsuk-u-width-two-thirds",
-            label: {
-              text: "Variant type (optional)"
-            },
-            hint: {
-              text: "For example missense"
-            }
-          }) }} #}
-        {% endset -%}
-
 
         {{ radios({
         classes: "nhsuk-u-margin-bottom-",
@@ -153,7 +148,7 @@ Variant search prototype
           name: "searchtype",
           fieldset: {
             legend: {
-              text: "Search by",
+              text: "Search type",
               classes: "nhsuk-fieldset__legend--s",
               isPageHeading: "true"
             }
@@ -183,13 +178,6 @@ Variant search prototype
               conditional: {
                 html: positionHtml
               }
-            },
-            {
-              value: "region",
-              text: "Genomic range",
-              conditional: {
-                html: regionHtml
-              }
             }
 
           ]
@@ -197,34 +185,7 @@ Variant search prototype
 
 
             <div class="nhsuk-u-margin-bottom-6">
-            <label class="nhsuk-label nhsuk-label--s" for="input-with-hint-text">
-                Variant consequence type (optional)
-            </label>
-            
-            <div class="nhsuk-hint" id="input-with-hint-text-hint">
-                For example missense
-            </div>
 
-            <select title="Variant type" name="varType" id="varType">
-                <option></option>
-                <option>missense variant</option>
-                <option>synonymous variant</option>
-                <option>initiator codon variant</option>
-                <option>stop codon variant</option>
-                <option>in-frame deletion</option>
-                <option>in-frame insertion</option>
-                <option>non coding transcript variant</option>
-                <option>splice acceptor variant</option>
-                <option>intron variant</option>
-                <option>splice donor variant</option>
-                <option>splice region variant</option>
-                <option>frameshift variant</option>
-                <option>start loss</option>
-                <option>stop gained</option>
-                <option>stop lost</option>
-                <option>start lost</option>
-                <option>transcript amplification</option>
-            </select>
             
             <link rel="stylesheet" href="/css/accessible-autocomplete.min.css" />
             <script type="text/javascript" src="/js/accessible-autocomplete.min.js"></script>
@@ -305,12 +266,9 @@ Variant search prototype
             Search
         </button>
         
-        <h2 class="nhsuk-heading-s ">Data sources </h2>
+        <h2  id="dataSource" class="nhsuk-heading-s ">Data source </h2>
         <p>
             100K Genomes Project Pan-Cancer data is from "<a href="">Table S1: Somatic small variant protein changes</a>", Sosinsky et al., Nat Med 30, 279-289 (2024)
-        </p>
-        <p>
-            Genomics England haematological and solid tumour cancers data is from <a href="">haematological somatic frequency table</a> on NHS Futures.
         </p>
 
     </div>
