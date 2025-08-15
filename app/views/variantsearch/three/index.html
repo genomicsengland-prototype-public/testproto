@@ -49,7 +49,7 @@ Variant search prototype
             name: "HGVScV",
             classes: "nhsuk-u-width-two-thirds",
             label: {
-              visuallyHiddenText: "CDS change"
+              visuallyHiddenText: "Coding sequence change"
             },
             hint: {
               text: "For example ENST00000324856.13:c.1113dup or NM_006015.6:c.1113dup"
@@ -165,7 +165,7 @@ Variant search prototype
 
             {
               value: "HGVSc",
-              text: "CDS change",
+              text: "Coding sequence change",
               conditional: {
                 html: HGVScHtml
               }
@@ -186,16 +186,9 @@ Variant search prototype
             },
             {
               value: "region",
-              text: "Region",
+              text: "Genomic range",
               conditional: {
                 html: regionHtml
-              }
-            },
-            {
-              value: "gene",
-              text: "Gene",
-              conditional: {
-                html: geneHtml
               }
             }
 
