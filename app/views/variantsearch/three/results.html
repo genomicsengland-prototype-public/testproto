@@ -1,0 +1,349 @@
+{% extends 'layout.html' %}
+{% from 'tag/macro.njk' import tag %}
+
+{% block pageTitle %}
+Variant search results
+{% endblock %}
+{% set cancerPatientData = true %}
+
+
+{% block beforeContent %}
+
+{% endblock %}
+
+{% block outerContent %}
+<div class="nhsuk-back-link" style="margin-top: 2rem">
+    <a class="nhsuk-back-link__link" href="javascript:history.back();">
+      <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+        aria-hidden="true" height="24" width="24">
+        <path
+          d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z">
+        </path>
+      </svg>
+      Go back to edit your search</a>
+  </div>
+{% endblock %} {% block content %}
+
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+        <h1 class="nhsuk-heading-l">Search results</h1>
+        <p class="nhsuk-u-margin-bottom-4">
+          Searched [number] cases in dataset<sup><a href="#dataSource">1</a></sup> for <br>
+          <strong>[data variant field] [variant consequence selected]</strong> and <strong>[tumour selected]</strong>
+        </p>
+        
+{# coding RESULTS #}
+
+{% if (data['searchtype'] == 'HGVSc') %}
+
+        {% if data["tumourType"] %} 
+        
+        {% endif %}
+
+<table class="nhsuk-table-responsive nhsuk-u-margin-bottom-8" role="table">
+  <caption class="nhsuk-table__caption nhsuk-u-margin-bottom-2">[total] cases with {{ data["HGVScV"]}} </caption>
+  <thead class="nhsuk-table__head" role="rowgroup">
+    <tr role="row">
+      <th scope="col" class="nhsuk-table__header nhsuk-u-width-one-half" role="columnheader">Tumour type</th>
+      <th scope="col" class="nhsuk-table__header nhsuk-u-width-one-quarter" role="columnheader">Cases with <br>{{ data["HGVScV"]}} </th>
+      <th scope="col" class="nhsuk-table__header nhsuk-u-width-one-quarter" role="columnheader">Nested in <br>frame deletions</th>
+      <th scope="col" class="nhsuk-table__header nhsuk-u-width-one-quarter" role="columnheader">Truncated variants <br>downstream</th>
+    </tr>
+  </thead>
+  <tbody class="nhsuk-table__body">
+    <tr class="nhsuk-table__row" role="row">
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Tumour type </span>[Tumour name]</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Cases with {{ data["HGVScV"]}} {{ data["varType"]}} </span>[cases]</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Nested in frame deletions </span>[cases]</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">truncated variants downstream </span>[cases]</td>
+    </tr>
+    <tr class="nhsuk-table__row" role="row">
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Tumour type </span>
+        {% if (data['tumourType'] == 'Breast Invasive Carcinoma') %}<strong>
+          Breast Invasive Carcinoma {% else %}[Tumour two] {% endif %}</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Cases with  {{ data["HGVScV"]}} {{ data["varType"]}} </span>
+        {% if (data['tumourType'] == 'Breast Invasive Carcinoma') %}<strong>{% endif %}
+        [cases]</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Nested in frame deletions </span>
+        {% if (data['tumourType'] == 'Breast Invasive Carcinoma') %}<strong>{% endif %}
+        [cases]</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">truncated variants downstream </span>
+        {% if (data['tumourType'] == 'Breast Invasive Carcinoma') %}<strong>{% endif %}
+        [cases]</td>
+    </tr>
+    <tr class="nhsuk-table__row" role="row">
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Tumour type </span>[Tumour name]</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Cases with {{ data["HGVScV"]}} {{ data["varType"]}} </span>[cases]</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Nested in frame deletions </span>[cases]</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">truncated variants downstream </span>[cases]</td>
+    </tr>
+    <tr class="nhsuk-table__row" role="row">
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Tumour type </span>[Tumour name]</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Cases with {{ data["HGVScV"]}} {{ data["varType"]}} </span>[cases]</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Cases with nested in frame deletions </span>[cases]</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">truncated variants downstream </span>[cases]</td>
+    </tr>
+  </tbody>
+</table>
+
+{% endif %}
+
+{# protien RESULTS #}
+
+{% if (data['searchtype'] == 'HGVSp') %}
+
+        {% if data["tumourType"] %} 
+        {% endif %}
+
+<table class="nhsuk-table-responsive nhsuk-u-margin-bottom-8" role="table">
+  <caption class="nhsuk-table__caption nhsuk-u-margin-bottom-2">[total] cases with {{ data["HGVSpV"]}} </caption>
+  <thead class="nhsuk-table__head" role="rowgroup">
+    <tr role="row">
+      <th scope="col" class="nhsuk-table__header nhsuk-u-width-one-half" role="columnheader">Tumour type</th>
+      <th scope="col" class="nhsuk-table__header nhsuk-u-width-one-quarter" role="columnheader">Cases with <br>{{ data["HGVSpV"]}} </th>
+      <th scope="col" class="nhsuk-table__header nhsuk-u-width-one-quarter" role="columnheader">Nested in <br>frame deletions</th>
+      <th scope="col" class="nhsuk-table__header nhsuk-u-width-one-quarter" role="columnheader">Truncated variants <br>downstream</th>
+    </tr>
+  </thead>
+  <tbody class="nhsuk-table__body">
+    <tr class="nhsuk-table__row" role="row">
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Tumour type </span>[Tumour name]</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Cases with {{ data["hGVSpV"]}} {{ data["varType"]}} </span>[cases]</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Nested in frame deletions </span>[cases]</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">truncated variants downstream </span>[cases]</td>
+    </tr>
+    <tr class="nhsuk-table__row" role="row">
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Tumour type </span>
+        {% if (data['tumourType'] == 'Breast Invasive Carcinoma') %}<strong>
+          Breast Invasive Carcinoma {% else %}[Tumour two] {% endif %}</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Cases with  {{ data["hGVSpV"]}} {{ data["varType"]}} </span>
+        {% if (data['tumourType'] == 'Breast Invasive Carcinoma') %}<strong>{% endif %}
+        [cases]</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Nested in frame deletions </span>
+        {% if (data['tumourType'] == 'Breast Invasive Carcinoma') %}<strong>{% endif %}
+        [cases]</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">truncated variants downstream </span>
+        {% if (data['tumourType'] == 'Breast Invasive Carcinoma') %}<strong>{% endif %}
+        [cases]</td>
+    </tr>
+    <tr class="nhsuk-table__row" role="row">
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Tumour type </span>[Tumour name]</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Cases with {{ data["hGVSpV"]}} {{ data["varType"]}} </span>[cases]</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Nested in frame deletions </span>[cases]</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">truncated variants downstream </span>[cases]</td>
+    </tr>
+    <tr class="nhsuk-table__row" role="row">
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Tumour type </span>[Tumour name]</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Cases with {{ data["hGVSpV"]}} {{ data["varType"]}} </span>[cases]</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Cases with nested in frame deletions </span>[cases]</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">truncated variants downstream </span>[cases]</td>
+    </tr>
+  </tbody>
+</table>
+
+
+{% endif %}
+
+
+{# position RESULTS #}
+
+{% if (data['searchtype'] == 'position') %}
+
+        {% if data["tumourType"] %} 
+        {% endif %}
+
+<table class="nhsuk-table-responsive nhsuk-u-margin-bottom-8" role="table">
+  <caption class="nhsuk-table__caption nhsuk-u-margin-bottom-2">[total] cases in position {{ data["positionV"]}} {{ data["varType"]}}</caption>
+  <thead class="nhsuk-table__head" role="rowgroup">
+    <tr role="row">
+      <th scope="col" class="nhsuk-table__header nhsuk-u-width-one-half" role="columnheader">Tumour type</th>
+      <th scope="col" class="nhsuk-table__header nhsuk-u-width-one-quarter" role="columnheader">Cases in position <br>{{ data["positionV"]}} {{ data["varType"]}}</th>
+      <th scope="col" class="nhsuk-table__header nhsuk-u-width-one-quarter" role="columnheader">Nested in <br>frame deletions</th>
+      <th scope="col" class="nhsuk-table__header nhsuk-u-width-one-quarter" role="columnheader">Truncated variants <br>downstream</th>
+    </tr>
+  </thead>
+  <tbody class="nhsuk-table__body">
+    <tr class="nhsuk-table__row" role="row">
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Tumour type </span>[Tumour name]</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Cases in position {{ data["positionV"]}} {{ data["varType"]}} </span>[cases]</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Nested in frame deletions </span>[cases]</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">truncated variants downstream </span>[cases]</td>
+    </tr>
+    <tr class="nhsuk-table__row" role="row">
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Tumour type </span>
+        {% if (data['tumourType'] == 'Breast Invasive Carcinoma') %}<strong>
+          Breast Invasive Carcinoma {% else %}[Tumour two] {% endif %}</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Cases in position  {{ data["positionV"]}} {{ data["varType"]}} </span>
+        {% if (data['tumourType'] == 'Breast Invasive Carcinoma') %}<strong>{% endif %}
+        [cases]</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Nested in frame deletions </span>
+        {% if (data['tumourType'] == 'Breast Invasive Carcinoma') %}<strong>{% endif %}
+        [cases]</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">truncated variants downstream </span>
+        {% if (data['tumourType'] == 'Breast Invasive Carcinoma') %}<strong>{% endif %}
+        [cases]</td>
+    </tr>
+    <tr class="nhsuk-table__row" role="row">
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Tumour type </span>[Tumour name]</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Cases in position {{ data["positionV"]}} {{ data["varType"]}} </span>[cases]</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Nested in frame deletions </span>[cases]</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">truncated variants downstream </span>[cases]</td>
+    </tr>
+    <tr class="nhsuk-table__row" role="row">
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Tumour type </span>[Tumour name]</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Cases in position {{ data["positionV"]}} {{ data["varType"]}} </span>[cases]</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Cases with nested in frame deletions </span>[cases]</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">truncated variants downstream </span>[cases]</td>
+    </tr>
+  </tbody>
+</table>
+
+
+{% endif %}
+
+{# region RESULTS #}
+
+{% if (data['searchtype'] == 'region') %}
+        {% if data["tumourType"] %} 
+        {% endif %}
+
+
+<table class="nhsuk-table-responsive nhsuk-u-margin-bottom-8" role="table">
+  <caption class="nhsuk-table__caption nhsuk-u-margin-bottom-2">[total] cases in range {{ data["regionV"]}} {{ data["varType"]}}</caption>
+  <thead class="nhsuk-table__head" role="rowgroup">
+    <tr role="row">
+      <th scope="col" class="nhsuk-table__header nhsuk-u-width-one-half" role="columnheader">Tumour type</th>
+      <th scope="col" class="nhsuk-table__header nhsuk-u-width-one-quarter" role="columnheader">Cases in range <br>{{ data["regionV"]}} {{ data["varType"]}}</th>
+      <th scope="col" class="nhsuk-table__header nhsuk-u-width-one-quarter" role="columnheader">Nested in <br>frame deletions</th>
+      <th scope="col" class="nhsuk-table__header nhsuk-u-width-one-quarter" role="columnheader">Truncated variants <br>downstream</th>
+    </tr>
+  </thead>
+  <tbody class="nhsuk-table__body">
+    <tr class="nhsuk-table__row" role="row">
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Tumour type </span>[Tumour name]</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Cases in range {{ data["regionV"]}} {{ data["varType"]}} </span>[cases]</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Nested in frame deletions </span>[cases]</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">truncated variants downstream </span>[cases]</td>
+    </tr>
+    <tr class="nhsuk-table__row" role="row">
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Tumour type </span>
+        {% if (data['tumourType'] == 'Breast Invasive Carcinoma') %}<strong>
+          Breast Invasive Carcinoma {% else %}[Tumour two] {% endif %}</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Cases in range  {{ data["regionV"]}} {{ data["varType"]}} </span>
+        {% if (data['tumourType'] == 'Breast Invasive Carcinoma') %}<strong>{% endif %}
+        [cases]</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Nested in frame deletions </span>
+        {% if (data['tumourType'] == 'Breast Invasive Carcinoma') %}<strong>{% endif %}
+        [cases]</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">truncated variants downstream </span>
+        {% if (data['tumourType'] == 'Breast Invasive Carcinoma') %}<strong>{% endif %}
+        [cases]</td>
+    </tr>
+    <tr class="nhsuk-table__row" role="row">
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Tumour type </span>[Tumour name]</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Cases in range {{ data["regionV"]}} {{ data["varType"]}} </span>[cases]</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Nested in frame deletions </span>[cases]</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">truncated variants downstream </span>[cases]</td>
+    </tr>
+    <tr class="nhsuk-table__row" role="row">
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Tumour type </span>[Tumour name]</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Cases in range {{ data["regionV"]}} {{ data["varType"]}} </span>[cases]</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Cases with nested in frame deletions </span>[cases]</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">truncated variants downstream </span>[cases]</td>
+    </tr>
+  </tbody>
+</table>
+
+{% endif %}
+
+{# GENE RESULTS #}
+
+{% if (data['searchtype'] == 'gene') %}
+
+        {% if data["tumourType"] %} 
+        {% endif %}
+
+<table class="nhsuk-table-responsive nhsuk-u-margin-bottom-8" role="table">
+  <caption class="nhsuk-table__caption nhsuk-u-margin-bottom-2">[total] cases with {{ data["geneV"]}} {{ data["varType"]}}</caption>
+  <thead class="nhsuk-table__head" role="rowgroup">
+    <tr role="row">
+      <th scope="col" class="nhsuk-table__header nhsuk-u-width-one-half" role="columnheader">Tumour type</th>
+      <th scope="col" class="nhsuk-table__header nhsuk-u-width-one-quarter" role="columnheader">Cases with<br>{{ data["geneV"]}} {{ data["varType"]}}</th>
+      <th scope="col" class="nhsuk-table__header nhsuk-u-width-one-quarter" role="columnheader">Nested in <br>frame deletions</th>
+      <th scope="col" class="nhsuk-table__header nhsuk-u-width-one-quarter" role="columnheader">Truncated variants <br>downstream</th>
+    </tr>
+  </thead>
+  <tbody class="nhsuk-table__body">
+    <tr class="nhsuk-table__row" role="row">
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Tumour type </span>[Tumour one]</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">{{ data["geneV"]}} {{ data["varType"]}} </span>[cases]</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">nested in frame deletions </span>[cases]</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">truncated variants downstream </span>[cases]</td>
+    </tr>
+    <tr class="nhsuk-table__row" role="row">
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Tumour type </span>
+        {% if (data['tumourType'] == 'Breast Invasive Carcinoma') %}<strong>
+          Breast Invasive Carcinoma {% else %}[Tumour two] {% endif %}</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">cases with {{ data["geneV"]}} {{ data["varType"]}} </span>
+        {% if (data['tumourType'] == 'Breast Invasive Carcinoma') %}<strong>{% endif %}
+        [cases]</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">nested in frame deletions </span>
+        {% if (data['tumourType'] == 'Breast Invasive Carcinoma') %}<strong>{% endif %}
+        [cases]</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">truncated variants downstream </span>
+        {% if (data['tumourType'] == 'Breast Invasive Carcinoma') %}<strong>{% endif %}
+        [cases]</td>
+    </tr>
+    <tr class="nhsuk-table__row" role="row">
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Tumour type </span>[Tumour three]</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">cases with {{ data["geneV"]}} {{ data["varType"]}} </span>[cases]</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">nested in frame deletions </span>[cases]</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">truncated variants downstream </span>[cases]</td>
+    </tr>
+    <tr class="nhsuk-table__row" role="row">
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Tumour type </span>[Tumour four]</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">cases with {{ data["geneV"]}} {{ data["varType"]}} </span>[cases]</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">cases with nested in frame deletions </span>[cases]</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">truncated variants downstream </span>[cases]</td>
+    </tr>
+  </tbody>
+</table>
+{% endif %}
+
+
+        <p class="nhsuk-u-margin-bottom-6">
+            <a href="">Download full results</a>
+        </p>
+
+        <a
+            class="nhsuk-button  nhsuk-button--secondary"
+            data-module="nhsuk-button"
+            href="javascript:history.back();"
+            draggable="false"
+            role="button"
+        >
+            Edit this search
+        </a>
+
+
+        <div>
+            <a
+                class="nhsuk-button nhsuk-u-margin-bottom-8"
+                data-module="nhsuk-button"
+                href="/variantsearch/three/"
+                draggable="false"
+                role="button"
+            >
+                Start a new search
+            </a>
+
+        </div>
+        
+        <h2 id="dataSource" class="nhsuk-heading-s ">Data source </h2>
+        <ol><li>
+            100K Genomes Project Pan-Cancer data is from "<a href="">Table S1: Somatic small variant protein changes</a>", Sosinsky et al., Nat Med 30, 279-289 (2024).
+        </li></ol>
+
+    </div>
+</div>
+{% endblock %}
