@@ -157,7 +157,7 @@ Variant search results
   <thead class="nhsuk-table__head" role="rowgroup">
     <tr role="row">
       <th scope="col" class="nhsuk-table__header nhsuk-u-width-one-half" role="columnheader">Tumour type</th>
-      <th scope="col" class="nhsuk-table__header nhsuk-u-width-one-quarter" role="columnheader">Cases in position <br>{{ data["positionV"]}} {{ data["varType"]}}</th>
+      <th scope="col" class="nhsuk-table__header nhsuk-u-width-one-quarter" role="columnheader">Cases in position <br>{{ data["positionV"]}} {% if data["tumourType"] %} <br>{{ data["varType"]}}{% endif %}</th>
       <th scope="col" class="nhsuk-table__header nhsuk-u-width-one-quarter" role="columnheader">Nested in <br>frame deletions</th>
       <th scope="col" class="nhsuk-table__header nhsuk-u-width-one-quarter" role="columnheader">Truncated variants <br>downstream</th>
     </tr>
